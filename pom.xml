@@ -4,7 +4,7 @@
 
   <groupId>kwee.replaceTool</groupId>
   <artifactId>replaceTool</artifactId>
-  <version>0.2.7.0</version>
+  <version>0.0.1.0</version>
   <packaging>jar</packaging>
 <!--
   <parent>
@@ -120,6 +120,7 @@
       <version>3.25.0-GA</version>
     </dependency>
   </dependencies>
+  
   <build>
     <resources>
       <resource>
@@ -160,7 +161,7 @@
           <archive>
             <manifest>
 		      <addClasspath>true</addClasspath>
-		      <mainClass>kwee.replaceTool.main.Main</mainClass>
+		      <mainClass>kwee.tools.main.Main</mainClass>
 		    </manifest>
           </archive>
           <descriptorRefs>
@@ -195,25 +196,7 @@
               </resources>
               <encoding>UTF-8</encoding>
             </configuration>
-          </execution>
-          <execution>
-            <id>helpfile</id>
-            <phase>package</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${project.basedir}/target</outputDirectory>
-              <resources>                                        
-                <resource>
-                  <directory>./help</directory>
-                  <includes>
-                    <include>replaceTool.chm</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>         
+          </execution>        
         </executions>
       </plugin>		
 	  <!-- readme.md ^ -->
@@ -235,9 +218,8 @@
                <outfile>target/replaceTool.exe</outfile>
                <downloadUrl>https://cdn.azul.com/zulu/bin/zulu17.40.19-ca-jdk17.0.6-win_x64.msi</downloadUrl>
                <classPath>
-                 <mainClass>replaceTool.main.Main</mainClass>
+                 <mainClass>kwee.tools.main.Main</mainClass>
               </classPath>
-	  	      <icon>src/main/resources/ingSNSLogo.ico</icon>
               <jre>
                 <bundledJre64Bit>true</bundledJre64Bit>
 	            <path>%java_home%</path>
@@ -256,95 +238,6 @@
               </versionInfo>
             </configuration>
           </execution>
-        </executions>
-      </plugin>
-	  <!-- LAUNCH4J ^ -->
-	  <!-- Sign executable v -->
-      <plugin>
-        <groupId>net.jsign</groupId>
-        <artifactId>jsign-maven-plugin</artifactId>
-        <version>4.0</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-            <configuration>
-              <file>target/replaceTool.exe</file>
-              <name>ING OFX Converter</name>
-              <url>https://github.com/RSHKwee/replaceTool</url>
-              <keystore>keystore.jks</keystore>
-              <alias>RSHK</alias>
-              <storepass>GW93ayi0j2CfeJx9VoSo</storepass>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-	  <!-- Sign executable ^ -->
-      <!-- Windows installers v -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>3.1.0</version>
-        <executions>
-		
-		  <execution>
-            <id>replaceToolHelp</id>
-            <phase>process-resources</phase>
-           <goals>
-              <goal>exec</goal>
-            </goals>          
-            <configuration>
-              <executable>HelpChm.cmd</executable>
-              <workingDirectory>help</workingDirectory>
-              <arguments>
-                <argument>replaceTool.hhp</argument>
-              </arguments>
-            </configuration>          
-          </execution>
-		  
-          <execution>
-            <id>innoSetup</id>
-            <phase>package</phase>
-           <goals>
-              <goal>exec</goal>
-            </goals>          
-            <configuration>
-              <executable>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</executable>
-              <workingDirectory>...</workingDirectory>
-              <arguments>
-                <argument>replaceTool.iss</argument>
-              </arguments>
-            </configuration>
-          </execution>
-          <execution>
-            <id>innoSetupNoJre</id>
-            <phase>package</phase>
-           <goals>
-              <goal>exec</goal>
-            </goals>          
-            <configuration>
-              <executable>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</executable>
-              <workingDirectory>...</workingDirectory>
-              <arguments>
-                <argument>replaceToolnojre.iss</argument>
-              </arguments>
-            </configuration>
-          </execution>
-          <execution>
-            <id>innoSetupJreDown</id>
-            <phase>package</phase>
-           <goals>
-              <goal>exec</goal>
-            </goals>          
-            <configuration>
-              <executable>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</executable>
-              <workingDirectory>...</workingDirectory>
-              <arguments>
-                <argument>replaceTool_jreDownload.iss</argument>
-              </arguments>
-            </configuration>
-          </execution>         
         </executions>
       </plugin>
     </plugins>

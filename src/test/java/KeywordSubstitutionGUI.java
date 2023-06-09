@@ -1,4 +1,4 @@
-package kwee.tools;
+
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -14,6 +14,7 @@ public class KeywordSubstitutionGUI {
   private JTextArea inputTextArea;
   private JButton selectInputButton;
   private JButton selectOutputButton;
+  private JButton selectSubstitutionsButton;
   private JButton substituteButton;
 
   public static void main(String[] args) {
@@ -44,22 +45,18 @@ public class KeywordSubstitutionGUI {
     keywordTextArea = new JTextArea(10, 30);
     JScrollPane keywordScrollPane = new JScrollPane(keywordTextArea);
     keywordScrollPane.setBorder(BorderFactory.createTitledBorder("Keyword Substitutions"));
-    GridBagConstraints c1 = new GridBagConstraints();
-    c1.insets = new Insets(5, 5, 5, 5);
-    c1.gridx = 0;
-    c1.gridy = 0;
-    c1.gridwidth = 2;
-    pane.add(keywordScrollPane, c1);
+    c.gridx = 0;
+    c.gridy = 0;
+    c.gridwidth = 2;
+    pane.add(keywordScrollPane, c);
 
     inputTextArea = new JTextArea(10, 30);
     JScrollPane inputScrollPane = new JScrollPane(inputTextArea);
     inputScrollPane.setBorder(BorderFactory.createTitledBorder("Input Text"));
-    GridBagConstraints c2 = new GridBagConstraints();
-    c2.insets = new Insets(5, 5, 5, 5);
-    c2.gridx = 0;
-    c2.gridy = 1;
-    c2.gridwidth = 2;
-    pane.add(inputScrollPane, c2);
+    c.gridx = 0;
+    c.gridy = 1;
+    c.gridwidth = 2;
+    pane.add(inputScrollPane, c);
 
     selectInputButton = new JButton("Select Input File");
     selectInputButton.addActionListener(new ActionListener() {
@@ -68,12 +65,10 @@ public class KeywordSubstitutionGUI {
         selectInputFile();
       }
     });
-    GridBagConstraints c3 = new GridBagConstraints();
-    c3.insets = new Insets(5, 5, 5, 5);
-    c3.gridx = 0;
-    c3.gridy = 2;
-    c3.gridwidth = 1;
-    pane.add(selectInputButton, c3);
+    c.gridx = 0;
+    c.gridy = 2;
+    c.gridwidth = 1;
+    pane.add(selectInputButton, c);
 
     selectOutputButton = new JButton("Select Output File");
     selectOutputButton.addActionListener(new ActionListener() {
@@ -82,11 +77,21 @@ public class KeywordSubstitutionGUI {
         selectOutputFile();
       }
     });
-    GridBagConstraints c4 = new GridBagConstraints();
-    c4.insets = new Insets(5, 5, 5, 5);
-    c4.gridx = 1;
-    c4.gridy = 2;
-    pane.add(selectOutputButton, c4);
+    c.gridx = 1;
+    c.gridy = 2;
+    pane.add(selectOutputButton, c);
+
+    selectSubstitutionsButton = new JButton("Select Substitutions File");
+    selectSubstitutionsButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        selectSubstitutionsFile();
+      }
+    });
+    c.gridx = 0;
+    c.gridy = 3;
+    c.gridwidth = 2;
+    pane.add(selectSubstitutionsButton, c);
 
     substituteButton = new JButton("Substitute Keywords");
     substituteButton.addActionListener(new ActionListener() {
@@ -95,12 +100,10 @@ public class KeywordSubstitutionGUI {
         performKeywordSubstitution();
       }
     });
-    GridBagConstraints c5 = new GridBagConstraints();
-    c5.insets = new Insets(5, 5, 5, 5);
-    c5.gridx = 0;
-    c5.gridy = 3;
-    c5.gridwidth = 2;
-    pane.add(substituteButton, c5);
+    c.gridx = 0;
+    c.gridy = 4;
+    c.gridwidth = 2;
+    pane.add(substituteButton, c);
   }
 
   private void selectInputFile() {
@@ -134,6 +137,26 @@ public class KeywordSubstitutionGUI {
         BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
         writer.write(inputTextArea.getText());
         writer.close();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  private void selectSubstitutionsFile() {
+    JFileChooser fileChooser = new JFileChooser();
+    int result = fileChooser.showOpenDialog(null);
+    if (result == JFileChooser.APPROVE_OPTION) {
+      File selectedFile = fileChooser.getSelectedFile();
+      try {
+        BufferedReader reader = new BufferedReader(new FileReader(selectedFile));
+        StringBuilder content = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+          content.append(line).append("\n");
+        }
+        reader.close();
+        keywordTextArea.setText(content.toString());
       } catch (IOException e) {
         e.printStackTrace();
       }
