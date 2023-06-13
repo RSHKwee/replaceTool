@@ -320,6 +320,7 @@ public class GUILayout extends JPanel implements ItemListener {
         reader.close();
         inputTextArea.setText(content.toString());
       } catch (IOException e) {
+        LOGGER.log(Level.INFO, "Inputfile: " + e.getMessage());
         e.printStackTrace();
       }
     }
@@ -339,6 +340,7 @@ public class GUILayout extends JPanel implements ItemListener {
         writer.write(inputTextArea.getText());
         writer.close();
       } catch (IOException e) {
+        LOGGER.log(Level.INFO, "Outputfile: " + e.getMessage());
         e.printStackTrace();
       }
     }
@@ -363,6 +365,7 @@ public class GUILayout extends JPanel implements ItemListener {
         reader.close();
         keywordTextArea.setText(content.toString());
       } catch (IOException e) {
+        LOGGER.log(Level.INFO, "Substitionfile: " + e.getMessage());
         e.printStackTrace();
       }
     }

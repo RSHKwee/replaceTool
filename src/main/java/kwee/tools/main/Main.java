@@ -43,7 +43,7 @@ public class Main {
 
       @Override
       public void windowOpened(WindowEvent e) {
-        // TODO Auto-generated method stub
+        // Do nothing
       }
 
       @Override
@@ -66,27 +66,27 @@ public class Main {
 
       @Override
       public void windowClosed(WindowEvent e) {
-        // TODO Auto-generated method stub
+        // Do nothing
       }
 
       @Override
       public void windowIconified(WindowEvent e) {
-        // TODO Auto-generated method stub
+        // Do nothing
       }
 
       @Override
       public void windowDeiconified(WindowEvent e) {
-        // TODO Auto-generated method stub
+        // Do nothing
       }
 
       @Override
       public void windowActivated(WindowEvent e) {
-        // TODO Auto-generated method stub
+        // Do nothing
       }
 
       @Override
       public void windowDeactivated(WindowEvent e) {
-        // TODO Auto-generated method stub
+        // Do nothing
       }
     });
 
