@@ -15,7 +15,7 @@ import kwee.library.JarInfo;
 import kwee.tools.gui.GUILayout;
 
 /**
- * Main program for ING csv to OFX convertor
+ * Main program for Replace tool
  * 
  * @author kweers1
  */
@@ -94,6 +94,7 @@ public class Main {
     scenGUI.setOpaque(true);
 
     frame.pack();
+    frame.setLocation(250, 75);
     frame.setVisible(true);
 
     LOGGER.log(Level.INFO, "Replace tool versie : " + m_creationtime);
