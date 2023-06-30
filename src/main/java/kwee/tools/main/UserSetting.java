@@ -41,12 +41,16 @@ public class UserSetting {
   private String m_InputFile = "";
   private String m_OutputFile = "";
 
-  private Preferences pref = Preferences.userRoot();
+  private Preferences pref;
+  private Preferences userPrefs = Preferences.userRoot();
 
   /**
    * Constructor Initialize settings
    */
   public UserSetting() {
+    // Navigate to the preference node that stores the user setting
+    pref = userPrefs.node("kwee.replaceTool");
+
     m_toDisk = pref.getBoolean(c_toDisk, false);
     m_ConfirmOnExit = pref.getBoolean(c_ConfirmOnExit, false);
     m_LookAndFeel = pref.get(c_LookAndFeel, c_LookAndFeelVal);
@@ -162,6 +166,7 @@ public class UserSetting {
 
   public String print() {
     String l_line = "User setting \n";
+    l_line = l_line + "Name: " + pref.name() + "\n";
     l_line = l_line + c_toDisk + ": " + m_toDisk + "\n";
     l_line = l_line + c_ConfirmOnExit + ": " + m_ConfirmOnExit + "\n";
 
@@ -175,28 +180,4 @@ public class UserSetting {
 
     return l_line;
   }
-
-/*
- * @formatter:off 
-  private String c_StringDelim = ";";
- 
-  private String FilesToString(File[] a_Files) {
-    String l_files = "";
-    for (int i = 0; i < a_Files.length; i++) {
-      l_files = l_files + a_Files[i].getAbsolutePath() + c_StringDelim;
-    }
-    return l_files;
-  }
-
-  private File[] StringToFiles(String a_Files) {
-    String[] ls_files = a_Files.split(c_StringDelim);
-    File[] l_files = new File[ls_files.length];
-
-    for (int i = 0; i < ls_files.length; i++) {
-      File ll_file = new File(ls_files[i]);
-      l_files[i] = ll_file;
-    }
-    return l_files;
-  }
-*/
 }
