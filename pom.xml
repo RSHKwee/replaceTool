@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>kwee.replaceTool</groupId>
-  <artifactId>replaceTool</artifactId>
+  <artifactId>replacetool</artifactId>
   <version>0.0.1.0</version>
   <packaging>jar</packaging>
 
@@ -54,7 +54,7 @@
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
           </descriptorRefs>
-          <finalName>replaceTool</finalName>
+          <finalName>replacetool</finalName>
         </configuration>
       </plugin>
 	  <!-- Distribute readme.md v -->
@@ -120,7 +120,7 @@
                 <productVersion>${project.version}</productVersion>
                 <txtProductVersion>${project.version}</txtProductVersion>
                 <productName>${project.name}</productName>
-                <internalName>replaceTool</internalName>
+                <internalName>replacetool</internalName>
                 <originalFilename>replaceTool.exe</originalFilename>
               </versionInfo>
             </configuration>
