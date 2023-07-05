@@ -34,13 +34,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
-
+import kwee.library.AboutWindow;
 import kwee.logger.MyLogger;
 import kwee.logger.TextAreaHandler;
 import kwee.tools.main.Main;
@@ -56,6 +55,7 @@ public class GUILayout extends JPanel implements ItemListener {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private static final long serialVersionUID = 1L;
   static final String c_CopyrightYear = "2023";
+  private static String c_reponame = "ReplaceTool";
 
   // Loglevels: OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL
   static final String[] c_levels = { "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL" };
@@ -224,9 +224,17 @@ public class GUILayout extends JPanel implements ItemListener {
     mntmAbout.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        AboutWindow l_window = new AboutWindow(c_reponame, Main.m_creationtime, c_CopyrightYear);
+        l_window.setVisible(true);
+
+        // @formatter:off
+        /*
+        
         JFrame frame = new JFrame("About");
         String l_message = "GarminSummary version " + Main.m_creationtime + "\n\nCopyright © " + c_CopyrightYear;
         JOptionPane.showMessageDialog(frame, l_message, "About", JOptionPane.PLAIN_MESSAGE);
+                */
+        // @formatter:on
       }
     });
     mnHelpAbout.add(mntmAbout);
