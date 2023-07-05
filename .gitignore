@@ -23,3 +23,6 @@
 hs_err_pid*
 replay_pid*
 .settings/
+.classpath
+.project
+target/
