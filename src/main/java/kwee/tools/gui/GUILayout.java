@@ -40,6 +40,7 @@ import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
 import kwee.library.AboutWindow;
+import kwee.library.ShowPreferences;
 import kwee.logger.MyLogger;
 import kwee.logger.TextAreaHandler;
 import kwee.tools.main.Main;
@@ -192,6 +193,18 @@ public class GUILayout extends JPanel implements ItemListener {
       }
     });
     mnSettings.add(mntmLogToDisk);
+
+    // Option Preferences
+    JMenuItem mntmPreferences = new JMenuItem("Preferences");
+    mntmPreferences.setName("Preferences");
+    mntmPreferences.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        ShowPreferences showpref = new ShowPreferences(UserSetting.NodePrefName);
+        showpref.showAllPreferences();
+      }
+    });
+    mnSettings.add(mntmPreferences);
 
     // ? item
     JMenu mnHelpAbout = new JMenu("?");
