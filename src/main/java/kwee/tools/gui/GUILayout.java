@@ -206,6 +206,18 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnSettings.add(mntmPreferences);
 
+    // Option All preferences
+    JMenuItem mntmAllPreferences = new JMenuItem("All preferences");
+    mntmAllPreferences.setName("All preferences");
+    mntmAllPreferences.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        ShowPreferences showpref = new ShowPreferences();
+        showpref.showAllPreferences();
+      }
+    });
+    mnSettings.add(mntmAllPreferences);
+
     // ? item
     JMenu mnHelpAbout = new JMenu("?");
     mnHelpAbout.setHorizontalAlignment(SwingConstants.RIGHT);
