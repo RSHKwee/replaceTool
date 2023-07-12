@@ -104,6 +104,10 @@ public class UserSetting {
     return m_toDisk;
   }
 
+  public Preferences getPreferences() {
+    return pref;
+  }
+
   public boolean is_ConfirmOnExit() {
     return m_ConfirmOnExit;
   }

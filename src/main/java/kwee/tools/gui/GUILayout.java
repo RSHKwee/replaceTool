@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.prefs.BackingStoreException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -214,6 +215,12 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         ShowPreferences showpref = new ShowPreferences();
         showpref.showAllPreferences();
+        try {
+          LOGGER.log(Level.INFO, showpref.dumpPreferences("", showpref.getPreferences()));
+        } catch (BackingStoreException e1) {
+          // TODO Auto-generated catch block
+          e1.printStackTrace();
+        }
       }
     });
     mnSettings.add(mntmAllPreferences);
@@ -251,15 +258,6 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         AboutWindow l_window = new AboutWindow(c_reponame, Main.m_creationtime, c_CopyrightYear);
         l_window.setVisible(true);
-
-        // @formatter:off
-        /*
-        
-        JFrame frame = new JFrame("About");
-        String l_message = "GarminSummary version " + Main.m_creationtime + "\n\nCopyright © " + c_CopyrightYear;
-        JOptionPane.showMessageDialog(frame, l_message, "About", JOptionPane.PLAIN_MESSAGE);
-                */
-        // @formatter:on
       }
     });
     mnHelpAbout.add(mntmAbout);
