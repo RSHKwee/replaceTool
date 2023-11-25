@@ -40,10 +40,10 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
-import kwee.library.AboutWindow;
-import kwee.library.ShowPreferences;
+import kwee.library.swing.AboutWindow;
+import kwee.library.swing.ShowPreferences;
+import kwee.library.swing.TextAreaHandler;
 import kwee.logger.MyLogger;
-import kwee.logger.TextAreaHandler;
 import kwee.tools.main.Main;
 import kwee.tools.main.UserSetting;
 
