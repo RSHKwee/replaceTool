@@ -4,13 +4,13 @@
 
   <groupId>kwee.replaceTool</groupId>
   <artifactId>replacetool</artifactId>
-  <version>0.0.3.1</version>
+  <version>0.0.3.2</version>
   <packaging>jar</packaging>
 
   <parent>
 	<groupId>kwee</groupId>
 	<artifactId>aggregator</artifactId>
-	<version>1.0.0.1</version>
+	<version>1.1.0.0</version>
 	<relativePath>..\\pom.xml</relativePath>
   </parent>
 
