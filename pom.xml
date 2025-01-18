@@ -6,7 +6,11 @@
   <artifactId>replacetool</artifactId>
   <version>0.0.3.2</version>
   <packaging>jar</packaging>
-
+  
+  <prerequisites>
+    <maven>3.6.3</maven>
+  </prerequisites>  
+  
   <parent>
 	<groupId>kwee</groupId>
 	<artifactId>aggregator</artifactId>
@@ -35,7 +39,29 @@
     <!--  <pluginManagement> -->
 	<plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.5.0</version> <!-- Gebruik een geschikte versie van de plugin -->
+        <executions>
+          <execution>
+            <id>enforce-maven-version</id>
+            <goals>
+             <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+               <requireMavenVersion>
+                 <version>[3.6.3,)</version> <!-- Minimale Maven-versie vereist -->
+                </requireMavenVersion>
+              </rules>
+              <fail>true</fail> <!-- Stop de build bij niet-naleving -->
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>   
+      <plugin>
 		<artifactId>maven-assembly-plugin</artifactId>
+   		<version>3.7.1</version>      
 		<executions>
           <execution>
 			<phase>package</phase>
