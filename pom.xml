@@ -6,9 +6,10 @@
   <artifactId>replacetool</artifactId>
   <version>0.0.3.2</version>
   <packaging>jar</packaging>
-  
+  <name>replaceTool</name>
+
   <prerequisites>
-    <maven>3.6.3</maven>
+    <maven>${maven.min.version}</maven>
   </prerequisites>  
   
   <parent>
@@ -18,7 +19,6 @@
 	<relativePath>..\\pom.xml</relativePath>
   </parent>
 
-  <name>replaceTool</name>
   
   <dependencies>
  	<dependency>
@@ -41,7 +41,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>3.5.0</version> <!-- Gebruik een geschikte versie van de plugin -->
+        <version>${maven-enforcer-plugin.version}</version> <!-- Gebruik een geschikte versie van de plugin -->
         <executions>
           <execution>
             <id>enforce-maven-version</id>
@@ -51,7 +51,7 @@
             <configuration>
               <rules>
                <requireMavenVersion>
-                 <version>[3.6.3,)</version> <!-- Minimale Maven-versie vereist -->
+                 <version>${maven.min.version}</version> <!-- Minimale Maven-versie vereist -->
                 </requireMavenVersion>
               </rules>
               <fail>true</fail> <!-- Stop de build bij niet-naleving -->
@@ -61,7 +61,7 @@
       </plugin>   
       <plugin>
 		<artifactId>maven-assembly-plugin</artifactId>
-   		<version>3.7.1</version>      
+   		<version>${maven-assembly-plugin.version}</version>      
 		<executions>
           <execution>
 			<phase>package</phase>
