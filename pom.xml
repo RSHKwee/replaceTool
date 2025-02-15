@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>kwee.replaceTool</groupId>
+  <groupId>kwee</groupId>
   <artifactId>replacetool</artifactId>
   <version>0.0.3.3</version>
   <packaging>jar</packaging>
@@ -15,14 +15,14 @@
   <parent>
 	<groupId>kwee</groupId>
 	<artifactId>aggregator</artifactId>
-	<version>1.1.0.1</version>
+	<version>1.1.0.2-SNAPSHOT</version>
 	<relativePath>..\\pom.xml</relativePath>
   </parent>
 
   
   <dependencies>
  	<dependency>
-	  <groupId>kwee.library</groupId>
+	  <groupId>kwee</groupId>
 	  <artifactId>library</artifactId>
 	  <version>${kweeLibrary.version}</version>
 	</dependency>    
