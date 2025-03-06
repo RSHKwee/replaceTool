@@ -54,9 +54,9 @@ import kwee.tools.main.UserSetting;
  *
  */
 public class GUILayout extends JPanel implements ItemListener {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
   private static final long serialVersionUID = 1L;
-  static final String c_CopyrightYear = "2025";
+  static final String c_CopyrightYear = Main.c_CopyrightYear;
   private static String c_reponame = "ReplaceTool";
 
   // Loglevels: OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL

@@ -12,6 +12,7 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
 import kwee.library.JarInfo;
+import kwee.logger.MyLogger;
 import kwee.tools.gui.GUILayout;
 
 /**
@@ -21,9 +22,10 @@ import kwee.tools.gui.GUILayout;
  */
 
 public class Main {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
   static String m_MenuTitel = "Replace text tool, version ";
   static public String m_creationtime;
+  static public String c_CopyrightYear;
   static String m_LookAndFeel = "Nimbus";
   public static UserSetting m_param = new UserSetting();
   static boolean m_ConfirmOnExit = false;
@@ -130,6 +132,7 @@ public class Main {
 
     m_LookAndFeel = m_param.get_LookAndFeel();
     m_creationtime = JarInfo.getProjectVersion(GUILayout.class);
+    c_CopyrightYear = JarInfo.getYear(GUILayout.class);
     m_ConfirmOnExit = m_param.is_ConfirmOnExit();
 
     switch (argv.length) {
