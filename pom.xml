@@ -15,6 +15,10 @@
 	<relativePath>..\\pom.xml</relativePath>
   </parent>
   
+  <properties>
+    <project.description>Anominizer CSV files</project.description>
+  </properties>
+ 
   <dependencies>
  	<dependency>
 	  <groupId>kwee</groupId>
@@ -91,7 +95,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.basedir}/target</outputDirectory>
+              <outputDirectory>${project.build.directory}</outputDirectory>
               <resources>                                        
                 <resource>
                   <directory>.</directory>
@@ -122,16 +126,14 @@
              </goals>
              <configuration>
                <headerType>console</headerType>
-               <jar>target/replaceTool-jar-with-dependencies.jar</jar>
-               <outfile>target/replaceTool.exe</outfile>
-               <downloadUrl>https://cdn.azul.com/zulu/bin/zulu17.40.19-ca-jdk17.0.6-win_x64.msi</downloadUrl>
+               <jar>${project.build.directory}/replaceTool-jar-with-dependencies.jar</jar>
+               <outfile>${project.build.directory}/replaceTool.exe</outfile>
+               <downloadUrl>https://cdn.azul.com/zulu/bin/zulu22.32.21-ca-crac-jdk22.0.2-win_x64.zip</downloadUrl>
                <classPath>
                  <mainClass>kwee.tools.main.Main</mainClass>
               </classPath>
               <jre>
-                <bundledJre64Bit>true</bundledJre64Bit>
 	            <path>%java_home%</path>
-                <bundledJreAsFallback>true</bundledJreAsFallback>
               </jre>
               <versionInfo>
                 <fileVersion>${project.version}</fileVersion>
