@@ -128,7 +128,7 @@
                <headerType>console</headerType>
                <jar>${project.build.directory}/replaceTool-jar-with-dependencies.jar</jar>
                <outfile>${project.build.directory}/replaceTool.exe</outfile>
-               <downloadUrl>https://cdn.azul.com/zulu/bin/zulu22.32.21-ca-crac-jdk22.0.2-win_x64.zip</downloadUrl>
+               <downloadUrl>${downloadUrl.jre}</downloadUrl>
                <classPath>
                  <mainClass>kwee.tools.main.Main</mainClass>
               </classPath>
@@ -145,6 +145,7 @@
                 <productName>${project.name}</productName>
                 <internalName>replacetool</internalName>
                 <originalFilename>replaceTool.exe</originalFilename>
+                <companyName>${companyName}</companyName>
               </versionInfo>
             </configuration>
           </execution>
